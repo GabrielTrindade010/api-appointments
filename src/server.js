@@ -7,6 +7,8 @@ const { db } = require("./models");
 const errorHandler = require('./middlewares/errorHandler');
 const AppError = require('./utils/AppError');
 
+const userRoutes = require("./routes/userRoutes");
+
 const app = express();
 const PORT = 8080;
 
@@ -28,9 +30,8 @@ app.get("/", (req, res) => {
   res.send("Running");
 });
 
-app.get('/teste', (req, res, next) => {
-  return next(new AppError(`Rota ${req.originalUrl} não encontrada`, 404));
-});
+// Routes API
+app.use("/api", userRoutes);
 
 app.use(errorHandler);
 
