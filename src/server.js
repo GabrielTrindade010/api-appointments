@@ -8,6 +8,7 @@ const errorHandler = require('./middlewares/errorHandler');
 const AppError = require('./utils/AppError');
 
 const userRoutes = require("./routes/userRoutes");
+const loginRoutes = require("./routes/loginRoutes");
 
 const app = express();
 const PORT = 8080;
@@ -32,6 +33,7 @@ app.get("/", (req, res) => {
 
 // Routes API
 app.use("/api", userRoutes);
+app.use("/api", loginRoutes);
 
 app.use(errorHandler);
 
