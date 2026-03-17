@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt");
 
 const { Users, Phone, Address, Business } = require("../models/");
 const { createUserSchema } = require("../utils/userValidator");
+const UserRepository = require("../repository/UserRepository");
 
 class UserService {
 
@@ -69,6 +70,10 @@ class UserService {
 
         }
 
+    }
+
+    async getUser(data) {
+        return UserRepository.findById(data.id);
     }
 
 }
